@@ -117,7 +117,9 @@
   # services.xserver.libinput.enable = true;
 
   #Nvim Configuration
-  nvim.enable = true;
+  nvim = {
+    enable = true;
+  };
   programs = {
     fish.enable = true;
     firefox.enable = true;
@@ -152,14 +154,20 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     inputs.zen-browser.packages.${pkgs.system}.default
 
-      inputs.flox.packages.${pkgs.system}.default
+    inputs.flox.packages.${pkgs.system}.default
     k9s
     networkmanagerapplet
     catppuccin-sddm
     #  wget
   ];
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.variables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+  };
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
 
+  };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

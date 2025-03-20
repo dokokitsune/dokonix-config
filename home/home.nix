@@ -16,6 +16,10 @@
       size = 24;
 
     };
+    sessionVariables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+    };
     packages = with pkgs; [
       discord
       btop
@@ -42,7 +46,6 @@
         background-opacity = 0.9;
         background-blur = true;
         theme = "tokyonight_night";
-        
 
       };
     };
