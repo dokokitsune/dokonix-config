@@ -6,6 +6,9 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     hyprland.url = "github:hyprwm/Hyprland";
+    flox = {
+      url = "github:flox/flox/v1.3.16";
+    };
     ghostty = {
       url = "github:ghostty-org/ghostty";
     };

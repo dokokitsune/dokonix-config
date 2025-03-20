@@ -36,7 +36,6 @@
     enable = true;
     clean.enable = true;
     clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/home/user/my-nixos-config";
   };
 
   networking.hostName = "dokotop"; # Define your hostname.
@@ -152,6 +151,8 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     inputs.zen-browser.packages.${pkgs.system}.default
+
+      inputs.flox.packages.${pkgs.system}.default
     k9s
     networkmanagerapplet
     catppuccin-sddm
