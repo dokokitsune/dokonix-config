@@ -34,7 +34,14 @@
 
   programs = {
     home-manager.enable = true;
-    fish.enable = true;
+    fish = {
+      enable = true;
+      interactiveShellInit = ''
+        set fish_greeting # Disable greeting
+        alias ls="lsd"
+        alias lsa="lsd -alh"
+      '';
+    };
     starship.enable = true;
     ghostty = {
       enable = true;
@@ -46,6 +53,7 @@
         background-opacity = 0.9;
         background-blur = true;
         theme = "tokyonight_night";
+        window-padding-x = "2";
 
       };
     };

@@ -55,7 +55,7 @@
           nixosConfigurations.dokotop = inputs.nixpkgs.lib.nixosSystem {
             specialArgs.inputs = inputs;
             modules = [
-              ./nixos/configuration.nix
+              ./common/configuration.nix
                 nixos-hardware.nixosModules.lenovo-thinkpad-e14-amd
               { nixpkgs.overlays = [ inputs.hyprpanel.overlay ]; }
               {

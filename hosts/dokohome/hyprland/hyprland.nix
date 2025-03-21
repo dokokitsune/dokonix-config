@@ -16,14 +16,15 @@ let
 in
 {
 
-  services.hyprpaper = {
+  
+services.hyprpaper = {
     enable = true;
     settings = {
-      preload = "~/.dotfiles/common/wallpapers/lofi-bg.jpg";
-      wallpaper = "eDP-1, ~/.dotfiles/common/wallpapers/lofi-bg.jpg";
+      preload = "~/.dotfiles/nixos/wallpapers/lofi-bg.jpg";
+      wallpaper = "eDP-1, ~/.dotfiles/nixos/wallpapers/lofi-bg.jpg";
     };
   };
-
+  
   wayland.windowManager.hyprland = lib.mkForce {
     enable = true;
 
@@ -36,7 +37,6 @@ in
       input = {
         kb_layout = "us";
         follow_mouse = "1";
-        numlock_by_default = true;
         touchpad = {
           natural_scroll = "no";
         };
@@ -44,7 +44,7 @@ in
       general = {
         gaps_in = 2;
         gaps_out = 2;
-        border_size = 2;
+        border_size = 1;
         "col.active_border" = "rgba(27aaf5cc)  ";
         "col.inactive_border" = "rgba(595959aa)";
         layout = "dwindle";
@@ -78,7 +78,7 @@ in
         workspace_swipe = "off";
       };
       misc = {
-        focus_on_activate = true;
+        force_default_wallpaper = -1;
       };
 
       "$mainMod" = "SUPER";

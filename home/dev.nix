@@ -6,7 +6,7 @@
     awscli2
     gcc
     cmake
-    nodejs_22
+    #nodejs_22
     cargo
     tenv
     git
@@ -14,6 +14,7 @@
 #    yazi
     kubernetes
     containerd
+    lsd
   ];
 
 }
