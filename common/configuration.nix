@@ -14,13 +14,21 @@
 {
   imports = [
     # Include the results of the hardware scan.
-    
+
     ./modules
   ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    grub = {
+      enable = true;
+      devices = [ "nodev" ];
+      efiSupport = true;
+      useOSProber = true;
+    };
+  }; # boot.loader.systemd-boot.enable = true;
+  # boot.loader.efi.canTouchEfiVariables = true;
   nix = {
     settings = {
       experimental-features = [
@@ -152,7 +160,7 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     inputs.zen-browser.packages.${pkgs.system}.default
-    		          inputs.ghostty.packages.${pkgs.system}.default
+    inputs.ghostty.packages.${pkgs.system}.default
 
     inputs.flox.packages.${pkgs.system}.default
     k9s

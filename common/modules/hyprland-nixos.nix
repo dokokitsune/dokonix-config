@@ -24,6 +24,7 @@
     brightnessctl
     xfce.thunar
     upower
+    wlogout
 #    hyprpolkitagent
     hyprpaper
     xdg-desktop-portal-hyprland
