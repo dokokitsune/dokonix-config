@@ -35,7 +35,12 @@
   };
 
   outputs =
-    inputs@{ flake-parts, nixpkgs, nixos-hardware, ... }:
+    inputs@{
+      flake-parts,
+      nixpkgs,
+      nixos-hardware,
+      ...
+    }:
 
     flake-parts.lib.mkFlake { inherit inputs; } (
       top@{
@@ -52,39 +57,56 @@
 
         flake = {
           # Put your original flake attributes here.
-          nixosConfigurations.dokotop = inputs.nixpkgs.lib.nixosSystem {
-            specialArgs.inputs = inputs;
-            modules = [
-              ./common/configuration.nix
+          nixosConfigurations = {
+            dokotop = inputs.nixpkgs.lib.nixosSystem {
+              specialArgs.inputs = inputs;
+              modules = [
+                ./common
+                ./hosts/dokotop
+
                 nixos-hardware.nixosModules.lenovo-thinkpad-e14-amd
-              { nixpkgs.overlays = [ inputs.hyprpanel.overlay ]; }
-              {
-                nixpkgs.config = {
-                  allowUnfree = true;
-                  permittedInsecurePackages = [ "terraform-1.11.0" ];
-                };
-                environment.systemPackages = [
-                  inputs.ghostty.packages.x86_64-linux.default
+                { nixpkgs.overlays = [ inputs.hyprpanel.overlay ]; }
 
-                ];
-              }
+                inputs.home-manager.nixosModules.home-manager
+                inputs.nvim-config.nixosModules.default
 
-              inputs.home-manager.nixosModules.home-manager
-              inputs.nvim-config.nixosModules.default
-              {
-                home-manager = {
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-                  backupFileExtension = "backup";
-                  users.dokotop = import ./home;
-                  extraSpecialArgs = { inherit inputs; };
-                };
-              }
+                {
+                  home-manager = {
+                    useGlobalPkgs = true;
+                    useUserPackages = true;
+                    backupFileExtension = "backup";
+                    users.wwood = import ./hosts/dokotop/home;
+                    extraSpecialArgs = { inherit inputs; };
+                  };
 
-            ];
+                }
+
+              ];
+            };
+
+            dokohome = inputs.nixpkgs.lib.nixosSystem {
+              specialArgs.inputs = inputs;
+              modules = [
+                ./common
+                ./hosts/dokohome
+
+                { nixpkgs.overlays = [ inputs.hyprpanel.overlay ]; }
+                inputs.home-manager.nixosModules.home-manager
+                inputs.nvim-config.nixosModules.default
+                {
+                  home-manager = {
+                    useGlobalPkgs = true;
+                    useUserPackages = true;
+                    backupFileExtension = "backup";
+                    users.wwood = import ./hosts/dokohome/home;
+                    extraSpecialArgs = { inherit inputs; };
+                  };
+
+                }
+              ];
+            };
           };
 
-          
         };
 
         systems = [

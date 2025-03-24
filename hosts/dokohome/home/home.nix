@@ -7,8 +7,8 @@
 }:
 {
   home = {
-    username = "dokotop";
-    homeDirectory = "/home/dokotop";
+    username = "wwood";
+    homeDirectory = "/home/wwood";
     pointerCursor = {
       gtk.enable = true;
       package = pkgs.vimix-cursors;

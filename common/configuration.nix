@@ -14,7 +14,7 @@
 {
   imports = [
     # Include the results of the hardware scan.
-    ./hardware-configuration.nix
+    
     ./modules
   ];
 
@@ -38,7 +38,6 @@
     clean.extraArgs = "--keep-since 4d --keep 3";
   };
 
-  networking.hostName = "dokotop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -128,7 +127,7 @@
   users.defaultUserShell = pkgs.fish;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.dokotop = {
+  users.users.wwood = {
     shell = pkgs.fish;
     isNormalUser = true;
     description = "Weston Wood";
@@ -153,6 +152,7 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     inputs.zen-browser.packages.${pkgs.system}.default
+    		          inputs.ghostty.packages.${pkgs.system}.default
 
     inputs.flox.packages.${pkgs.system}.default
     k9s
