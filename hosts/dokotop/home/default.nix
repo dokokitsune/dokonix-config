@@ -1,6 +1,8 @@
 {
+
   imports = [
-    ./configuration.nix
+    ./home.nix
+    ./dev.nix
     ./hyprland
   ];
 }
