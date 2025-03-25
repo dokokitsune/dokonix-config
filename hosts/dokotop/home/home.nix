@@ -16,6 +16,7 @@
       size = 24;
 
     };
+
     sessionVariables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
@@ -30,6 +31,18 @@
     ];
 
     stateVersion = "24.11";
+  };
+
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Tokyonight-Dark";
+      package = pkgs.tokyonight-gtk-theme;
+    };
+    iconTheme = {
+      name = "kora";
+      package = pkgs.kora-icon-theme;
+    };
   };
 
   programs = {

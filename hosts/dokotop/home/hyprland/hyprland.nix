@@ -20,8 +20,8 @@ in
 services.hyprpaper = {
     enable = true;
     settings = {
-      preload = "~/.dotfiles/hosts/dokohome/wallpapers/lofi-escape.jpg";
-      wallpaper = "eDP-1, ~/.dotfiles/hosts/dokohome/wallpapers/lofi-escape.jpg";
+      preload = "~/.dotfiles/hosts/dokotop/wallpapers/lofi-bg.jpg";
+      wallpaper = "eDP-1, ~/.dotfiles/hosts/dokotop/wallpapers/lofi-bg.jpg";
     };
   };
   
