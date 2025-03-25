@@ -153,6 +153,7 @@
 
   nixpkgs.config.allowUnfree = true;
   services.gnome.gnome-keyring.enable = true;
+  services.udisks2.enable = true;
   # Allow unfree packages
   # nixpkgs.config.allowUnfree = true;
   # List packages installed in system profile. To search, run:
@@ -161,9 +162,9 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     inputs.zen-browser.packages.${pkgs.system}.default
     inputs.ghostty.packages.${pkgs.system}.default
-
     inputs.flox.packages.${pkgs.system}.default
     k9s
+    udiskie
     networkmanagerapplet
     catppuccin-sddm
     #  wget

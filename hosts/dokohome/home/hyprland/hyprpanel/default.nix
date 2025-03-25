@@ -54,7 +54,6 @@
             "cpu"
             "ram"
             "network"
-            "battery"
             "clock"
           ];
         };

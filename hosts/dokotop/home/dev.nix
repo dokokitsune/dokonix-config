@@ -8,9 +8,9 @@
     cmake
     #nodejs_22
     cargo
-    tenv
+#    tenv
     git
-    lazygit
+#    lazygit
 #    yazi
     kubernetes
     containerd

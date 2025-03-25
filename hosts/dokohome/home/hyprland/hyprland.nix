@@ -21,7 +21,7 @@ services.hyprpaper = {
     enable = true;
     settings = {
       preload = "~/.dotfiles/hosts/dokohome/wallpapers/lofi-escape.jpg";
-      wallpaper = "eDP-1, ~/.dotfiles/hosts/dokohome/wallpapers/lofi-escape.jpg";
+      wallpaper = "DP-1, ~/.dotfiles/hosts/dokohome/wallpapers/lofi-escape.jpg";
     };
   };
   
