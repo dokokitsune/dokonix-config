@@ -51,8 +51,10 @@
             "notifications"
           ];
           right = [
+            "systray"
             "cpu"
             "ram"
+            "volume"
             "network"
             "clock"
           ];
@@ -72,7 +74,7 @@
         clock.format = "%a %b %d %R";
 
       };
-      
+
       menus = {
         clock = {
           time = {
