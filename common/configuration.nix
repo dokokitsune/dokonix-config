@@ -25,7 +25,7 @@
       enable = true;
       devices = [ "nodev" ];
       efiSupport = true;
-      useOSProber = true;
+#      useOSProber = true; # Only to decect and add to boot loader
     };
   }; # boot.loader.systemd-boot.enable = true;
   # boot.loader.efi.canTouchEfiVariables = true;
