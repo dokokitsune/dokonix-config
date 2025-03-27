@@ -46,6 +46,14 @@
     clean.extraArgs = "--keep-since 4d --keep 3";
   };
 
+  virtualisation.docker  ={
+    enable = true;
+    storageDriver = "btrfs";
+    rootless  = {
+      enable = true;
+      setSocketVariable  = true;
+    };
+  };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary

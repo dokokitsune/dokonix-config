@@ -971,11 +971,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1743022480,
-        "narHash": "sha256-qyCXthMI60MLJ4+GGCzwQhH2dx+d3UNu1bm229YRngM=",
+        "lastModified": 1743029244,
+        "narHash": "sha256-kzXai6swlXixhjyUbV5pb1mtXUPLayM3GouyPoVsOyk=",
         "owner": "dokokitsune",
         "repo": "nixcats-config",
-        "rev": "238ef25c6ea9b28289e970f1894a648b3ca4bb99",
+        "rev": "95a8df27ba69178421eac46f5a34d99b832179ae",
         "type": "github"
       },
       "original": {
