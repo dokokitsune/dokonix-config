@@ -78,6 +78,8 @@ services.hyprpaper = {
         workspace_swipe = "off";
       };
       misc = {
+        focus_on_activate = true;
+
         force_default_wallpaper = -1;
       };
 

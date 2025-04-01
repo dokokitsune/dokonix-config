@@ -79,6 +79,7 @@ services.hyprpaper = {
       };
       misc = {
         force_default_wallpaper = -1;
+        focus_on_activate = true;
       };
 
       "$mainMod" = "SUPER";
