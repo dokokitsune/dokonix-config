@@ -14,7 +14,7 @@
 #    yazi
     kubernetes
     containerd
-    lsd
+    eza
   ];
 
 }

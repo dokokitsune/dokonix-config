@@ -30,6 +30,7 @@
     xdg-desktop-portal-hyprland
     hyprcursor
     hyprshot
+    zoom-us
   ];
 
 }

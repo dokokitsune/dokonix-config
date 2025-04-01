@@ -50,8 +50,7 @@
       enable = true;
       interactiveShellInit = ''
         set fish_greeting # Disable greeting
-        alias ls="lsd"
-        alias lsa="lsd -alh"
+        alias ls="eza"
       '';
     };
     starship.enable = true;
