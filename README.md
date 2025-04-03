@@ -1,7 +1,7 @@
 # dokonix-config
 This is my own Nixos Configuration. This config uses the "Hostname" of the machine to determine what part of the configuration gets added.
 
-##  Notable Configuration
+## Dotfiles
 - Window-Manager:  [Hyprland](https://github.com/hyprwm/Hyprland)
 - Launcher:   [Walker](https://github.com/abenz1267/walker)
 - Neovim: [NixCats Configuration](https://github.com/dokokitsune/nixcats-config)

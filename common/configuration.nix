@@ -90,7 +90,7 @@
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm = {
     enable = true;
-    theme = "catppuccin-sddm";
+    theme = "catppuccin-macchiato";
   };
   #  services.desktopManager.plasma6.enable = true;
 
@@ -174,11 +174,9 @@
     inputs.zen-browser.packages.${pkgs.system}.default
     inputs.ghostty.packages.${pkgs.system}.default
     inputs.flox.packages.${pkgs.system}.default
-    k9s
     udiskie
     networkmanagerapplet
     catppuccin-sddm
-    #  wget
   ];
   environment.variables = {
     EDITOR = "nvim";
