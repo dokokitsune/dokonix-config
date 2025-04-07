@@ -1,8 +1,7 @@
-{ inputs, pkgs, ... }:
+{ inputs, ... }:
 {
 
   imports = [ inputs.hyprpanel.homeManagerModules.hyprpanel ];
-
   programs.hyprpanel = {
 
     # Enable the module.
@@ -27,7 +26,6 @@
 
     # Import a theme from './themes/*.json'.
     # Default: ""
-    theme = "tokyo_night";
 
     # Override the final config with an arbitrary set.
     # Useful for overriding colors in your selected theme.
@@ -39,28 +37,6 @@
     # Configure bar layouts for monitors.
     # See 'https://hyprpanel.com/configuration/panel.html'.
     # Default: null
-    layout = {
-      "bar.layouts" = {
-        "0" = {
-          left = [
-            "dashboard"
-            "workspaces"
-          ];
-          middle = [
-            "windowtitle"
-            "notifications"
-          ];
-          right = [
-            "systray"
-            "cpu"
-            "ram"
-            "volume"
-            "network"
-            "clock"
-          ];
-        };
-      };
-    };
 
     # Configure and theme almost all options from the GUI.
     # Options that require '{}' or '[]' are not yet implemented,
@@ -72,6 +48,7 @@
         launcher.autoDetectIcon = true;
         workspaces.show_icons = true;
         clock.format = "%a %b %d %R";
+        autoHide = "fullscreen";
 
       };
 
@@ -89,12 +66,41 @@
 
         };
       };
-
-      theme.bar.transparent = true;
-
-      theme.font = {
-        name = "FiraCode Nerd Font";
-        size = "14px";
+      layout = {
+        "bar.layouts" = {
+          "0" = {
+            left = [
+              "dashboard"
+              "workspaces"
+            ];
+            middle = [
+              "windowtitle"
+              "notifications"
+            ];
+            right = [
+              "systray"
+              "cpu"
+              "ram"
+              "volume"
+              "network"
+              "clock"
+            ];
+          };
+        };
+      };
+      theme = {
+        name = "tokyo_night";
+        bar = {
+          transparent = true;
+          buttons = {
+            borderSize = "0.05em";
+            enableBorders = true;
+          };
+        };
+        font = {
+          name = "FiraCode Nerd Font";
+          size = "14px";
+        };
       };
     };
   };

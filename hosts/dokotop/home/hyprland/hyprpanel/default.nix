@@ -27,7 +27,6 @@
 
     # Import a theme from './themes/*.json'.
     # Default: ""
-    theme = "tokyo_night";
 
     # Override the final config with an arbitrary set.
     # Useful for overriding colors in your selected theme.
@@ -39,28 +38,6 @@
     # Configure bar layouts for monitors.
     # See 'https://hyprpanel.com/configuration/panel.html'.
     # Default: null
-    layout = {
-      "bar.layouts" = {
-        "0" = {
-          left = [
-            "dashboard"
-            "workspaces"
-          ];
-          middle = [
-            "windowtitle"
-            "notifications"
-          ];
-          right = [
-            "cpu"
-            "ram"
-            "network"
-            "battery"
-            "clock"
-          ];
-        };
-      };
-    };
-
     # Configure and theme almost all options from the GUI.
     # Options that require '{}' or '[]' are not yet implemented,
     # except for the layout above.
@@ -73,7 +50,28 @@
         clock.format = "%a %b %d %R";
 
       };
-      
+      layout = {
+        "bar.layouts" = {
+          "0" = {
+            left = [
+              "dashboard"
+              "workspaces"
+            ];
+            middle = [
+              "windowtitle"
+              "notifications"
+            ];
+            right = [
+              "cpu"
+              "ram"
+              "network"
+              "battery"
+              "clock"
+            ];
+          };
+        };
+      };
+
       menus = {
         clock = {
           time = {
@@ -88,12 +86,14 @@
 
         };
       };
+      theme = {
+        name = "tokyo_night";
+        bar.transparent = true;
+        font = {
+          name = "FiraCode Nerd Font";
+          size = "14px";
+        };
 
-      theme.bar.transparent = true;
-
-      theme.font = {
-        name = "FiraCode Nerd Font";
-        size = "14px";
       };
     };
   };

@@ -1,17 +1,15 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
-    (python3.withPackages (ps: with ps; with python3Packages; [
-      pip
-    ]))
     awscli2
     gcc
     cmake
     #nodejs_22
     cargo
-#    tenv
+    #    tenv
     git
-#    lazygit
-#    yazi
+    #    lazygit
+    #    yazi
     kubernetes
     containerd
     eza
