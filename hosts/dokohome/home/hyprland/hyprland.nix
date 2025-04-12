@@ -16,15 +16,14 @@ let
 in
 {
 
-  
-services.hyprpaper = {
+  services.hyprpaper = {
     enable = true;
     settings = {
       preload = "~/.dotfiles/hosts/dokohome/wallpapers/lofi-escape.jpg";
       wallpaper = "DP-1, ~/.dotfiles/hosts/dokohome/wallpapers/lofi-escape.jpg";
     };
   };
-  
+
   wayland.windowManager.hyprland = lib.mkForce {
     enable = true;
 
@@ -47,8 +46,14 @@ services.hyprpaper = {
         border_size = 1;
         "col.active_border" = "rgba(27aaf5cc)  ";
         "col.inactive_border" = "rgba(595959aa)";
-        layout = "dwindle";
+        layout = "master";
         allow_tearing = "false";
+      };
+      master = {
+        mfact = 0.5;
+        orientation = "center";
+#        always_center_master = true;
+
       };
       decoration = {
         rounding = 5;
@@ -70,10 +75,7 @@ services.hyprpaper = {
           "workspaces, 1, 6, default"
         ];
       };
-      dwindle = {
-        pseudotile = "yes";
-        preserve_split = "yes";
-      };
+
       gestures = {
         workspace_swipe = "off";
       };
@@ -132,7 +134,7 @@ services.hyprpaper = {
         ",XF86MonBrightnessDown, exec, brightnessctl s 10%-"
         ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         "$mainMod SHIFT,S, exec, hyprshot -m region "
-      
+
       ];
 
       binde = [
