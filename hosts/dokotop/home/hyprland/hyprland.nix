@@ -130,7 +130,7 @@ services.hyprpaper = {
         ",XF86MonBrightnessUp, exec, brightnessctl s +10%"
         ",XF86MonBrightnessDown, exec, brightnessctl s 10%-"
         ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        "$mainMod SHIFT,S, exec, hyprshot -m region "
+        ",Print, exec, hyprshot -m region "
       
       ];
 
