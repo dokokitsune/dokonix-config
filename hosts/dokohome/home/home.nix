@@ -50,8 +50,8 @@
       enable = true;
       interactiveShellInit = ''
         set fish_greeting # Disable greeting
-        enable_transience
         starship init fish | source
+        enable_transience
         alias ls="eza"
       '';
     };
