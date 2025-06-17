@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     flake-parts.url = "github:hercules-ci/flake-parts";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     hyprland.url = "github:hyprwm/Hyprland";
@@ -33,6 +34,7 @@
       flake-parts,
       nixpkgs,
       nixos-hardware,
+      determinate,
       ...
     }:
 
@@ -62,6 +64,7 @@
                 { nixpkgs.overlays = [ inputs.hyprpanel.overlay ]; }
 
                 inputs.home-manager.nixosModules.home-manager
+                inputs.determinate.nixosModules.default
                 inputs.nvim-config.nixosModules.default
 
                 {
@@ -86,6 +89,7 @@
 
                 { nixpkgs.overlays = [ inputs.hyprpanel.overlay ]; }
                 inputs.home-manager.nixosModules.home-manager
+                inputs.determinate.nixosModules.default
                 inputs.nvim-config.nixosModules.default
                 {
                   home-manager = {

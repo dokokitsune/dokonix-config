@@ -8,7 +8,6 @@ let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
     systemctl --user start hyprpolkitagent &
     udiskie &
-    hyprpanel &
     hyprpaper &
     nm-applet &
     systemctl --user enable --now hyprpolkitagent.service &

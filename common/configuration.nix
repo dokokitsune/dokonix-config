@@ -95,6 +95,7 @@
       pulse.enable = true;
     };
     gnome.gnome-keyring.enable = true;
+    udisks2.enable = true;
     tailscale.enable = true;
 
   };
