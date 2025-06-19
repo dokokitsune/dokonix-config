@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     awscli2
     gcc
+    talosctl
     cmake
     cargo
     git
