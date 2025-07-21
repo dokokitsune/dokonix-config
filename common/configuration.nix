@@ -38,7 +38,6 @@
     };
 
   };
-
   programs.nh = {
     enable = true;
     clean.enable = true;
@@ -77,11 +76,6 @@
   };
 
   services = {
-    displayManager.sddm = {
-      enable = true;
-      theme = "catppuccin-macchiato";
-      wayland.enable = true;
-    };
     xserver.xkb = {
       layout = "us";
       variant = "";

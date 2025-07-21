@@ -17,11 +17,13 @@
 
     };
     sessionVariables = {
+      HYPRSHOT_DIR = "/home/wwood/Pictures/";
       EDITOR = "nvim";
       VISUAL = "nvim";
     };
     packages = with pkgs; [
       discord
+      inputs.hyprpanel.packages.${pkgs.system}.default
       btop
       fish
       fastfetch
@@ -70,7 +72,9 @@
 
       };
     };
+    k9s = {
+      enable = true;
 
+    };
   };
-
 }

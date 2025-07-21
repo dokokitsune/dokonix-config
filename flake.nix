@@ -47,12 +47,10 @@
       }:
       {
         imports = [
-          # Import home-manager's flake module
           inputs.home-manager.flakeModules.home-manager
         ];
 
         flake = {
-          # Put your original flake attributes here.
           nixosConfigurations = {
             dokotop = inputs.nixpkgs.lib.nixosSystem {
               specialArgs.inputs = inputs;
@@ -61,12 +59,9 @@
                 ./hosts/dokotop
 
                 nixos-hardware.nixosModules.lenovo-thinkpad-e14-amd
-                { nixpkgs.overlays = [ inputs.hyprpanel.overlay ]; }
-
                 inputs.home-manager.nixosModules.home-manager
                 inputs.determinate.nixosModules.default
                 inputs.nvim-config.nixosModules.default
-
                 {
                   home-manager = {
                     useGlobalPkgs = true;
@@ -87,7 +82,6 @@
                 ./common
                 ./hosts/dokohome
 
-                { nixpkgs.overlays = [ inputs.hyprpanel.overlay ]; }
                 inputs.home-manager.nixosModules.home-manager
                 inputs.determinate.nixosModules.default
                 inputs.nvim-config.nixosModules.default
@@ -108,9 +102,7 @@
         };
 
         systems = [
-          # systems for which you want to build the `perSystem` attributes
           "x86_64-linux"
-          # ...
         ];
         perSystem =
           { pkgs, system, ... }:

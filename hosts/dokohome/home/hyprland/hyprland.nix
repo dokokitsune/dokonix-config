@@ -2,20 +2,23 @@
   inputs,
   pkgs,
   lib,
+  config,
   ...
 }:
 let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
+    regreet &
     systemctl --user start hyprpolkitagent &
     udiskie &
     hyprpanel &
     hyprpaper &
     nm-applet &
-    systemctl --user enable --now hyprpolkitagent.service &
     walker --gapplication-service 
   '';
 in
 {
+  xdg.configFile."uwsm/env".source =
+    "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
 
   services.hyprpaper = {
     enable = true;
@@ -27,13 +30,21 @@ in
 
   wayland.windowManager.hyprland = lib.mkForce {
     enable = true;
+    # Inherits from Nixos Module
+    package = null;
+    portalPackage = null;
+    systemd = {
+      variables = [ "--all" ];
+      enable = false;
+    };
 
     settings = {
       "$cursor" = "Vimix-cursors";
       "$mod" = "SUPER";
       exec-once = ''${startupScript}/bin/start'';
 
-      monitor = ",highres,auto,1";
+      monitor = "DP-1, 5120x1440@240, 0x0, 1, bitdepth, 10";
+
       input = {
         kb_layout = "us";
         follow_mouse = "1";
@@ -53,7 +64,7 @@ in
       master = {
         mfact = 0.5;
         orientation = "center";
-#        always_center_master = true;
+        #        always_center_master = true;
 
       };
       decoration = {
@@ -82,7 +93,9 @@ in
       };
       misc = {
         focus_on_activate = true;
-
+        disable_hyprland_logo = true;
+        disable_splash_rendering = true;
+        disable_hyprland_qtutils_check = true;
         force_default_wallpaper = -1;
       };
 

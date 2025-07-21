@@ -7,6 +7,8 @@
     cmake
     kubernetes
     k9s
+    fluxcd
+    cilium-cli
     eza
   ];
 

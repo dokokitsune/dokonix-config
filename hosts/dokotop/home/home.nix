@@ -19,10 +19,12 @@
 
     sessionVariables = {
       EDITOR = "nvim";
+      HYPRSHOT_DIR = "/home/wwood/Pictures/";
       VISUAL = "nvim";
     };
     packages = with pkgs; [
       discord
+      inputs.hyprpanel.packages.${pkgs.system}.default
       btop
       fish
       fastfetch

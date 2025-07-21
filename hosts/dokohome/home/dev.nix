@@ -9,6 +9,8 @@
     git
     k9s
     kubernetes
+    fluxcd
+    cilium-cli
     eza
   ];
 

@@ -2,31 +2,37 @@
   inputs,
   pkgs,
   lib,
+  config,
   ...
 }:
 let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
+    regreet &
     systemctl --user start hyprpolkitagent &
     udiskie &
+    hyprpanel &
     hyprpaper &
     nm-applet &
-    systemctl --user enable --now hyprpolkitagent.service &
     walker --gapplication-service 
   '';
 in
 {
 
-  
-services.hyprpaper = {
+  xdg.configFile."uwsm/env".source =
+    "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
+  services.hyprpaper = {
     enable = true;
     settings = {
       preload = "~/.dotfiles/hosts/dokotop/wallpapers/lofi-bg.jpg";
       wallpaper = "eDP-1, ~/.dotfiles/hosts/dokotop/wallpapers/lofi-bg.jpg";
     };
   };
-  
+
   wayland.windowManager.hyprland = lib.mkForce {
     enable = true;
+    # Inherits from Nixos Module
+    package = null;
+    portalPackage = null;
 
     settings = {
       "$cursor" = "Vimix-cursors";
@@ -131,7 +137,7 @@ services.hyprpaper = {
         ",XF86MonBrightnessDown, exec, brightnessctl s 10%-"
         ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         ",Print, exec, hyprshot -m region "
-      
+
       ];
 
       binde = [
