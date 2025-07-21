@@ -23,7 +23,6 @@
     };
     packages = with pkgs; [
       discord
-      inputs.hyprpanel.packages.${pkgs.system}.default
       btop
       fish
       fastfetch

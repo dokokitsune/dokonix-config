@@ -3,17 +3,9 @@
 
 
   programs.hyprpanel = {
-
+    enable = true;
     systemd.enable = true;
-
-    # Configure bar layouts for monitors.
-    # See 'https://hyprpanel.com/configuration/panel.html'.
-    # Default: null
-    # Configure and theme almost all options from the GUI.
-    # Options that require '{}' or '[]' are not yet implemented,
-    # except for the layout above.
-    # See 'https://hyprpanel.com/configuration/settings.html'.
-    # Default: <same as gui>
+    package = inputs.hyprpanel.packages.${pkgs.system}.default;
     settings = {
       bar = {
         launcher.autoDetectIcon = true;

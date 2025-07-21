@@ -2,9 +2,8 @@
 {
 
   programs.hyprpanel = {
-
-    systemd.enable = true;
-
+    enable = true;
+    package = inputs.hyprpanel.packages.${pkgs.system}.default;
 
     # Configure bar layouts for monitors.
     # See 'https://hyprpanel.com/configuration/panel.html'.
