@@ -2,7 +2,6 @@
   config,
   nixpkgs,
   pkgs,
-  inputs,
   ...
 }:
 {

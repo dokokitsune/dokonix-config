@@ -20,25 +20,7 @@
         workspaces.show_icons = true;
         clock.format = "%a %b %d %R";
         autoHide = "fullscreen";
-
-      };
-
-      menus = {
-        clock = {
-          time = {
-            military = true;
-            hideSeconds = true;
-          };
-          weather.unit = "imperial";
-        };
-        dashboard = {
-          directories.enabled = false;
-          stats.enable_gpu = true;
-
-        };
-      };
-      layout = {
-        "bar.layouts" = {
+        layouts = {
           "0" = {
             left = [
               "dashboard"
@@ -59,6 +41,22 @@
           };
         };
       };
+
+
+    menus = {
+      clock = {
+        time = {
+          military = true;
+          hideSeconds = true;
+        };
+        weather.unit = "imperial";
+      };
+      dashboard = {
+        directories.enabled = false;
+        stats.enable_gpu = true;
+
+      };
+    };
       theme = {
         name = "tokyo_night";
         bar = {

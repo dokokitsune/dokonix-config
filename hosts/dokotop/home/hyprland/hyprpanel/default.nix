@@ -1,20 +1,15 @@
-{ inputs,pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
-
 
   programs.hyprpanel = {
     enable = true;
-    systemd.enable = true;
     package = inputs.hyprpanel.packages.${pkgs.system}.default;
     settings = {
       bar = {
         launcher.autoDetectIcon = true;
         workspaces.show_icons = true;
         clock.format = "%a %b %d %R";
-
-      };
-      layout = {
-        "bar.layouts" = {
+        layouts = {
           "0" = {
             left = [
               "dashboard"
@@ -33,7 +28,8 @@
             ];
           };
         };
-      };
+
+    };
 
       menus = {
         clock = {
