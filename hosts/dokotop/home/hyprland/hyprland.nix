@@ -10,7 +10,6 @@ let
     regreet &
     systemctl --user start hyprpolkitagent &
     udiskie &
-    hyprpanel &
     hyprpaper &
     nm-applet &
     walker --gapplication-service 
@@ -33,8 +32,13 @@ in
     # Inherits from Nixos Module
     package = null;
     portalPackage = null;
+    systemd = {
+      variables = [ "--all" ];
+      enable = false;
+    };
 
     settings = {
+
       "$cursor" = "Vimix-cursors";
       "$mod" = "SUPER";
       exec-once = ''${startupScript}/bin/start'';

@@ -28,8 +28,7 @@
             ];
           };
         };
-
-    };
+      };
 
       menus = {
         clock = {
@@ -41,8 +40,6 @@
         };
         dashboard = {
           directories.enabled = false;
-          stats.enable_gpu = true;
-
         };
       };
       theme = {
