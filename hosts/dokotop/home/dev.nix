@@ -10,6 +10,7 @@
     fluxcd
     cilium-cli
     eza
+    nfs-utils
   ];
 
 }
