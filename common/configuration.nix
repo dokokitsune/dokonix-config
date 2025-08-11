@@ -19,14 +19,26 @@
   ];
 
   # Bootloader.
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    grub = {
-      enable = true;
-      devices = [ "nodev" ];
-      efiSupport = true;
-      useOSProber = true;
+  boot = {
+    loader = {
+      efi.canTouchEfiVariables = true;
+      grub = {
+        enable = true;
+        devices = [ "nodev" ];
+        efiSupport = true;
+        useOSProber = true;
+      };
     };
+    supportedFilesystems = [ "nfs" ];
+  };
+  fileSystems."/var/media" = {
+    device = "10.246.144.2:/mnt/Bulk/k8s/nfs";
+    fsType = "nfs";
+    options = [
+      "vers=4"
+      "rw"
+      "auto"
+    ];
   };
   nix = {
     settings = {
