@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
 
   boot.kernelPackages = pkgs.linuxPackages; # (this is the default) some amdgpu issues on 6.10
@@ -9,11 +9,13 @@
     graphics = {
       enable = true;
       enable32Bit = true;
+      package = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.mesa;
     };
     amdgpu.amdvlk = {
       enable = true;
       support32Bit.enable = true;
     };
+
   };
 
   environment = {
