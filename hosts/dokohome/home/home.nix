@@ -65,7 +65,7 @@
         gtk-tabs-location = "hidden";
         background-opacity = 0.9;
         background-blur = true;
-        theme = "tokyonight_night";
+        theme = "TokyoNight";
         window-padding-x = "2";
 
       };

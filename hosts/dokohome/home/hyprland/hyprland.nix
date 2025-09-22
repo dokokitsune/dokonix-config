@@ -10,7 +10,6 @@ let
     regreet &
     systemctl --user start hyprpolkitagent &
     udiskie &
-    hyprpanel &
     hyprpaper &
     nm-applet &
     walker --gapplication-service 
@@ -88,9 +87,6 @@ in
         ];
       };
 
-      gestures = {
-        workspace_swipe = "off";
-      };
       misc = {
         focus_on_activate = true;
         disable_hyprland_logo = true;
