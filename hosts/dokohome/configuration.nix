@@ -3,6 +3,11 @@
   imports = [ ./hardware-configuration.nix ];
   networking.hostName = "dokohome";
   programs = {
+
+      dank-material-shell = {
+        enable = true;
+      };
+
     regreet = {
       enable = true;
       settings = {
@@ -15,7 +20,7 @@
         };
       };
     };
-
+    
   };
 
 }

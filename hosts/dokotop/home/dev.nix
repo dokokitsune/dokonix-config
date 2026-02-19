@@ -11,6 +11,7 @@
     cilium-cli
     eza
     nfs-utils
+    nix-search-tv
   ];
 
 }

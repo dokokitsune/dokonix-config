@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    awscli2
     gcc
     talosctl
     cmake
@@ -12,6 +11,9 @@
     fluxcd
     cilium-cli
     eza
+    ansible
+    awscli2
+    opentofu
   ];
 
 }

@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 {
   config,
   lib,
@@ -32,7 +28,7 @@
     supportedFilesystems = [ "nfs" ];
   };
   fileSystems."/var/media" = {
-    device = "10.246.144.2:/mnt/Bulk/k8s/nfs";
+    device = "192.168.0.238:/mnt/Bulk/media";
     fsType = "nfs";
     options = [
       "vers=4"
@@ -64,10 +60,8 @@
       setSocketVariable = true;
     };
   };
-  # Enable networking
   networking.networkmanager = {
     enable = true;
-    plugins = with pkgs; [ networkmanager-openconnect ];
   };
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
@@ -107,12 +101,9 @@
   };
 
   fonts.packages = with pkgs; [
-    nerd-fonts.fira-code
+    nerd-fonts.lilex
   ];
 
-  nvim = {
-    enable = true;
-  };
   programs = {
     fish.enable = true;
     firefox.enable = true;
@@ -138,22 +129,18 @@
       "networkmanager"
       "wheel"
     ];
-    packages = with pkgs; [
-      kdePackages.kate
-      #  thunderbird
-    ];
   };
 
-  # Install firefox.
 
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     inputs.zen-browser.packages.${pkgs.system}.default
     inputs.ghostty.packages.${pkgs.system}.default
     inputs.flox.packages.${pkgs.system}.default
+    inputs.awww.packages.${pkgs.stdenv.hostPlatform.system}.awww
+    inputs.nvim-config.packages.${pkgs.system}.default
     udiskie
-    networkmanagerapplet
-    catppuccin-sddm
+    nvd
   ];
   environment.variables = {
     EDITOR = "nvim";

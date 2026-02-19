@@ -1,5 +1,5 @@
 # dokonix-config
-This is my own Nixos Configuration. This config uses the "Hostname" of the machine to determine what part of the configuration gets added.
+This is my own NixOS Configuration. This config uses the "Hostname" of the machine to determine what part of the configuration gets added.
 
 ## Dotfiles
 - Window-Manager:  [Hyprland](https://github.com/hyprwm/Hyprland)

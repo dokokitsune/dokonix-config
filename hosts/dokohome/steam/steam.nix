@@ -11,17 +11,13 @@
       enable32Bit = true;
       package = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.mesa;
     };
-    amdgpu.amdvlk = {
-      enable = true;
-      support32Bit.enable = true;
-    };
 
   };
 
   environment = {
     systemPackages = with pkgs; [
       mangohud
-      protonup
+      protonup-ng
     ];
     loginShellInit = ''
       [[ "$(tty)" = "/dev/tty1" ]] && ./gs.sh

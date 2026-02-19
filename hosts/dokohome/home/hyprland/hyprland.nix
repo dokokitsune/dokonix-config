@@ -9,23 +9,19 @@ let
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
     regreet &
     systemctl --user start hyprpolkitagent &
+    awww-daemon &
+    awww img -o DP-2 ~/.dotfiles/hosts/dokohome/wallpapers/lofi-escape.jpg &
+    dms run &
     udiskie &
-    hyprpaper &
-    nm-applet &
     walker --gapplication-service 
+
+
   '';
 in
 {
   xdg.configFile."uwsm/env".source =
     "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
 
-  services.hyprpaper = {
-    enable = true;
-    settings = {
-      preload = "~/.dotfiles/hosts/dokohome/wallpapers/lofi-escape.jpg";
-      wallpaper = "DP-1, ~/.dotfiles/hosts/dokohome/wallpapers/lofi-escape.jpg";
-    };
-  };
 
   wayland.windowManager.hyprland = lib.mkForce {
     enable = true;
@@ -42,14 +38,17 @@ in
       "$mod" = "SUPER";
       exec-once = ''${startupScript}/bin/start'';
 
-      monitor = "DP-1, 5120x1440@240, 0x0, 1, bitdepth, 10";
+      #monitor = "DP-1, 5120x1440@240, 0x0, 1, bitdepth, 10";
+      monitorv2 = {
+        output = "DP-2";
+        mode = "5120x1440@240";
+        scale = 1;
+        bitdepth = 10;
+      };
 
       input = {
         kb_layout = "us";
         follow_mouse = "1";
-        touchpad = {
-          natural_scroll = "no";
-        };
       };
       general = {
         gaps_in = 2;
@@ -60,12 +59,10 @@ in
         layout = "master";
         allow_tearing = "false";
       };
-      master = {
-        mfact = 0.5;
-        orientation = "center";
-        #        always_center_master = true;
-
-      };
+        master = {
+          mfact = 0.5;
+          orientation = "center";
+        };
       decoration = {
         rounding = 5;
         blur = {
@@ -86,12 +83,14 @@ in
           "workspaces, 1, 6, default"
         ];
       };
+      render = {
+        cm_fs_passthrough = true;
+      };
 
       misc = {
         focus_on_activate = true;
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
-        disable_hyprland_qtutils_check = true;
         force_default_wallpaper = -1;
       };
 
@@ -100,7 +99,7 @@ in
       bind = [
         "$mainMod, return, exec, ghostty"
         "$mainMod, C, killactive,"
-        "$mainMod, M, exit,"
+        "$mainMod SHIFT, L, exit,"
         "$mainMod, E, exec, thunar"
         "$mainMod, V, togglefloating,"
         "$mainMod, space, exec, walker"

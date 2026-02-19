@@ -1,6 +1,7 @@
 {
   config,
   nixpkgs,
+  inputs,
   pkgs,
   ...
 }:
@@ -60,7 +61,7 @@
       enable = true;
       settings = {
         shell-integration = "fish";
-        font-family = "FiraCode Nerd Font";
+        font-family = "Lilex Nerd Font";
         gtk-titlebar = false;
         gtk-tabs-location = "hidden";
         background-opacity = 0.9;

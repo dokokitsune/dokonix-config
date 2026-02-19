@@ -1,4 +1,5 @@
 { inputs, pkgs, ... }:
+
 {
 
   services = {
@@ -18,10 +19,9 @@
 
   environment.systemPackages = with pkgs; [
     brightnessctl
-    xfce.thunar
+    thunar
     upower
     wlogout
-    hyprpaper
     xdg-desktop-portal-hyprland
     hyprcursor
     hyprshot
