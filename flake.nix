@@ -1,110 +1,35 @@
 {
-  description = "My Main flake";
-
+  description = "Dentric Pattern Flake";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    awww.url = "git+https://codeberg.org/LGFae/awww";
-    hyprland.url = "github:hyprwm/Hyprland";
-    flox.url = "github:flox/flox/v1.3.16";
-    ghostty.url = "github:ghostty-org/ghostty";
-    dms.url = "github:AvengeMedia/DankMaterialShell";
-
-    hyprpanel = {
-      url = "github:jas-singhfsu/hyprpanel";
-      inputs.nixpkgs.follows = "nixpkgs";
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
     };
+    import-tree.url = "github:vic/import-tree";
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprland.url = "github:hyprwm/Hyprland";
+
     nvim-config = {
       url = "github:dokokitsune/nvf-config";
     };
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     walker.url = "github:abenz1267/walker";
+
     zen-browser.url = "github:youwen5/zen-browser-flake";
+    orion-browser.url = "github:dokokitsune/orion-browser-flake";
   };
 
-  outputs =
-    inputs@{
-      flake-parts,
-      self,
-      nixpkgs,
-      nixos-hardware,
-      ...
-    }:
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
-    flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [
-        "x86_64-linux"
-      ];
-      perSystem =
-        { pkgs, system, ... }:
-        {
-          _module.args.pkgs = import nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-            nixpkgs.overlay = true;
-
-          };
-        };
-      imports = [
-        inputs.home-manager.flakeModules.home-manager
-      ];
-
-      flake = {
-        nixosConfigurations = {
-          dokotop = inputs.nixpkgs.lib.nixosSystem {
-            specialArgs.inputs = inputs;
-            modules = [
-              ./common
-              ./hosts/dokotop
-
-              nixos-hardware.nixosModules.lenovo-thinkpad-e14-amd
-              inputs.home-manager.nixosModules.home-manager
-              inputs.determinate.nixosModules.default
-              inputs.dms.nixosModules.dank-material-shell
-              {
-                home-manager = {
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-                  backupFileExtension = "backup";
-                  users.wwood = import ./hosts/dokotop/home;
-                  extraSpecialArgs = { inherit inputs; };
-                };
-
-              }
-
-            ];
-          };
-
-          dokohome = inputs.nixpkgs.lib.nixosSystem {
-            specialArgs.inputs = inputs;
-            modules = [
-              ./common
-              ./hosts/dokohome
-
-
-              inputs.home-manager.nixosModules.home-manager
-              inputs.determinate.nixosModules.default
-              inputs.dms.nixosModules.dank-material-shell
-              {
-                home-manager = {
-                  useGlobalPkgs = true;
-                  useUserPackages = true;
-                  backupFileExtension = "backup";
-                  users.wwood = import ./hosts/dokohome/home;
-                  extraSpecialArgs = { inherit inputs; };
-                };
-
-              }
-            ];
-          };
-        };
-
-      };
-    };
 }
