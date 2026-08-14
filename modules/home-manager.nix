@@ -18,6 +18,7 @@
             walker
             hyprland
             ghostty
+            herdr
             zsh
             kubernetes
             git

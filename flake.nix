@@ -19,7 +19,7 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland";
-
+    herdr.url = "github:herdrdev/herdr";
     nvim-config = {
       url = "github:dokokitsune/nvf-config";
     };
