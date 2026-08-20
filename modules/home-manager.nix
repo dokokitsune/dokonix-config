@@ -20,6 +20,7 @@
             ghostty
             herdr
             zsh
+            direnv
             kubernetes
             git
             gtk
